@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para mi niño 💙</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eaf3ff;--card:#fff;--ink:#12305a;--soft:#5b7ba8;--b1:#2f7bff;--b2:#69b0ff;--line:#cfe0f7;--chip:#f3f8ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1a2e;--card:#14284a;--ink:#e8f1ff;--soft:#9db9e0;--b1:#4f93ff;--b2:#7bbcff;--line:#27436e;--chip:#1a3358}}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Quicksand","Segoe UI",system-ui,sans-serif;line-height:1.4}
+.wrap{max-width:640px;margin:0 auto;padding:16px 14px 60px;position:relative;z-index:1}
+header{text-align:center;padding:26px 10px 8px}
+h1{font-size:30px;margin:0;color:var(--b1)}
+header p{color:var(--soft);margin:6px 0 0}
+.heart{display:inline-block;animation:beat 1.2s infinite}
+@keyframes beat{50%{transform:scale(1.25)}}
+nav{display:flex;gap:6px;margin:14px 0;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:6px 0}
+nav button{flex:1;border:0;border-radius:14px;padding:10px 4px;font:inherit;font-weight:700;font-size:13px;background:var(--card);color:var(--soft);cursor:pointer;border:2px solid var(--line)}
+nav button.on{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border-color:transparent}
+section{display:none;animation:pop .35s}
+section.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}}
+.card{background:var(--card);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 6px 20px rgba(47,123,255,.12)}
+h2{margin:0 0 4px;font-size:19px}
+.sub{color:var(--soft);font-size:14px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.opt{border:2px solid var(--line);background:var(--chip);color:var(--ink);border-radius:16px;padding:10px 2px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}
+.opt span{display:block;font-size:28px}
+.opt:active{transform:scale(.92)}
+.opt.on{border-color:var(--b1);background:var(--b1);color:#fff;transform:scale(1.06)}
+.needs{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.chip.on{background:var(--b1);color:#fff;border-color:var(--b1)}
+textarea,input[type=text]{width:100%;border:2px solid var(--line);background:var(--chip);color:var(--ink);border-radius:14px;padding:12px;font:inherit;font-size:15px;margin-top:10px}
+.big{width:100%;border:0;border-radius:16px;padding:15px;font:inherit;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(135deg,var(--b1),var(--b2));cursor:pointer;margin-top:12px;box-shadow:0 6px 16px rgba(47,123,255,.35)}
+.big:active{transform:scale(.97)}
+.cups{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cup{background:var(--card);border-radius:18px;padding:14px 10px;text-align:center;border:2px dashed var(--b2);display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:space-between}
+.cup .e{font-size:34px}
+.cup b{font-size:14px}
+.cup small{color:var(--soft);font-size:12px}
+.cup button{border:0;border-radius:12px;padding:8px 12px;font:inherit;font-weight:800;font-size:13px;background:var(--b1);color:#fff;cursor:pointer;width:100%}
+.cup.used{opacity:.55;border-style:solid;border-color:var(--line)}
+.cup.used button{background:var(--soft)}
+.days{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(100px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font-weight:700;transition:.3s;z-index:20;max-width:90%;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.fl{position:fixed;font-size:26px;pointer-events:none;z-index:30;animation:up 1.6s ease-out forwards}
+@keyframes up{to{transform:translateY(-70vh) rotate(40deg);opacity:0}}
+.count{display:inline-block;background:var(--b1);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:800}
+#bg{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+#bg span{position:absolute;opacity:.16;animation:fl2 8s ease-in-out infinite alternate}
+@keyframes fl2{to{translate:0 -18px}}
+.meter{background:var(--chip);border:2px solid var(--line);border-radius:16px;padding:10px 12px;margin-top:10px;animation:pop .3s}
+.mt{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.mt span{color:var(--b1);font-weight:800}
+.meter input{width:100%;accent-color:var(--b1)}
+#sheet{position:fixed;inset:0;background:rgba(10,30,60,.55);display:none;align-items:flex-end;justify-content:center;z-index:40}
+#sheet.show{display:flex}
+.sh{background:var(--card);width:100%;max-width:640px;border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));animation:pop .3s}
+#pv{white-space:pre-wrap;background:var(--chip);border:2px solid var(--line);border-radius:14px;padding:12px;font-size:14px;max-height:30vh;overflow:auto}
+a.big{display:block;text-align:center;text-decoration:none}
+.xb{width:100%;border:0;background:none;color:var(--soft);font:inherit;font-weight:700;padding:12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div class="wrap">
+<header>
+  <h1>Hola, mi niño consentido <span class="heart">💙</span></h1>
+  <p>Esta página es solo para ti 🥰</p>
+</header>
+
+<nav>
+  <button class="on" data-t="animo">💭 Cómo estoy</button>
+  <button data-t="cupones">🎟️ Cupones</button>
+  <button data-t="comer">🍽️ Comer</button>
+</nav>
+
+<section id="animo" class="on">
+  <div class="card">
+    <h2>¿Cómo te sientes hoy?</h2>
+    <p class="sub">Toca todas las emociones que sientas y dime cuánto 💙</p>
+    <div class="grid" id="moods"></div>
+    <div id="meters"></div>
+  </div>
+  <div class="card">
+    <h2>¿Qué necesitas, mi niño?</h2>
+    <p class="sub">Puedes escoger todo lo que quieras</p>
+    <div class="needs" id="needs"></div>
+    <textarea id="nota" rows="3" placeholder="¿Quieres contarme algo más? (opcional)"></textarea>
+    <button class="big" id="sendMood">Enviar a tu pototito 💌</button>
+  </div>
+</section>
+
+<section id="cupones">
+  <div class="card">
+    <h2>Tus cupones de amor <span class="count" id="left"></span></h2>
+    <p class="sub">Canjea el que quieras y yo me encargo 😘</p>
+    <div class="cups" id="cups"></div>
+  </div>
+  <div class="card">
+    <h2>✨ Inventa tu propio cupón</h2>
+    <p class="sub">Si no está el plan que quieres, créalo</p>
+    <input type="text" id="cEmoji" maxlength="4" placeholder="Un emoji (ej: 🍝)" style="width:50%">
+    <input type="text" id="cName" placeholder="Nombre del cupón (ej: Noche de pasta)">
+    <button class="big" id="addC">Crear cupón 🎟️</button>
+  </div>
+</section>
+
+<section id="comer">
+  <div class="card">
+    <h2>🍽️ Tu día de comer donde quieras</h2>
+    <p class="sub">Escoge el día y el lugar, yo te acompaño</p>
+    <div class="days" id="days"></div>
+    <input type="text" id="lugar" placeholder="¿Dónde quieres comer? (restaurante, antojo…)">
+    <button class="big" id="sendDay">Reservar nuestro plan 🍴</button>
+  </div>
+</section>
+</div>
+<div style="max-width:640px;margin:0 auto;padding:0 14px 70px;position:relative;z-index:1"><div class="card" id="final"><h2>💌 Cuando termines, mi niño</h2><p class="sub" id="sum">Escoge lo que quieras arriba y aquí lo mandamos todo junto</p><button class="big" id="sendAll">Enviar a tu pototito 💙</button></div></div>
+<div id="sheet"><div class="sh"><h2>💌 Todo listo, mi niño</h2><p class="sub">Toca el botón, se abre WhatsApp con tu mensaje y solo le das enviar.</p><div id="pv"></div><a id="go" class="big" target="_blank" rel="noopener">Enviar a tu pototito 💙</a><button id="x" class="xb">Cerrar</button></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ✏️ Pon aquí el número de WhatsApp de ella con código de país, solo dígitos (ej: 573001234567)
+var PHONE = "573012090241";
+var LS = {
+  get:function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+var $ = function(id){return document.getElementById(id)};
+
+function wa(msg){
+  var url = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
+  $("pv").textContent=msg;$("go").href=url;$("sheet").classList.add("show");
+}
+$("x").onclick=function(){$("sheet").classList.remove("show")};
+$("go").onclick=function(){setTimeout(function(){$("sheet").classList.remove("show")},700)};
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("show");setTimeout(function(){e.classList.remove("show")},2600)}
+function hearts(list){
+  list = list || ["💙","💖","✨","🍕","🥰"];
+  for(var i=0;i<16;i++){(function(i){setTimeout(function(){
+    var s=document.createElement("div");s.className="fl";
+    s.textContent=list[Math.floor(Math.random()*list.length)];
+    s.style.left=(Math.random()*90)+"vw";s.style.bottom="10px";
+    document.body.appendChild(s);setTimeout(function(){s.remove()},1700);
+  },i*70)})(i)}
+}
+
+/* Fondo de emojis */
+(function(){var E=["🏋️","🍔","💙","🍔","🏋️","💖","🍟","💪","💙","🍕"],b=$("bg");
+for(var i=0;i<42;i++){var s=document.createElement("span");s.textContent=E[i%E.length];
+s.style.cssText="left:"+Math.random()*96+"%;top:"+Math.random()*96+"%;font-size:"+(22+Math.random()*30)+"px;animation-delay:-"+Math.random()*8+"s;rotate:"+(Math.random()*60-30)+"deg";b.appendChild(s)}})();
+
+/* Tabs */
+document.querySelectorAll("nav button").forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll("nav button,section").forEach(function(x){x.classList.remove("on")});
+    b.classList.add("on");$(b.dataset.t).classList.add("on");
+  };
+});
+
+/* Ánimo */
+var MOODS=[["😄","Feliz"],["🥰","Enamorado"],["😌","Tranquilo"],["😴","Cansado"],["😔","Triste"],["😤","Estresado"],["😡","Molesto"],["🤒","Mal del cuerpo"],["🤩","Emocionado"],["🙏","Agradecido"],["😰","Ansioso"],["🥺","Solito"],["🥱","Aburrido"],["😒","Celoso"],["😕","Confundido"],["🥹","Nostálgico"],["😎","Orgulloso"],["😏","Coqueto"],["🤪","Loquito"],["😭","Con ganas de llorar"]];
+var NEEDS=["🤗 Un abrazo","🍕 Comida rica","📞 Hablar contigo","🤫 Un poco de espacio","🎬 Película juntos","💆 Mimos","😂 Que me hagas reír","🎧 Tu compañía en silencio","✨ Una sorpresa","🚗 Salir a pasear"];
+var moods={}, needs=[];
+var WORDS=["Un poquito","Poquito","Algo","Más o menos","Bastante","Mucho","Muchísimo","Demasiado","Al máximo","Explotando"];
+function renderMeters(){
+  var box=$("meters");box.innerHTML="";
+  MOODS.forEach(function(m){
+    if(!moods[m[1]])return;
+    var r=document.createElement("div");r.className="meter";
+    r.innerHTML="<div class='mt'><b>"+m[0]+" "+m[1]+"</b><span></span></div><input type='range' min='1' max='10'>";
+    var inp=r.querySelector("input"),sp=r.querySelector("span");
+    inp.value=moods[m[1]];
+    var up=function(){sp.textContent=inp.value+"/10 · "+WORDS[inp.value-1]};
+    inp.oninput=function(){moods[m[1]]=+inp.value;up()};
+    up();box.appendChild(r);
+  });
+}
+MOODS.forEach(function(m){
+  var b=document.createElement("button");b.className="opt";
+  b.innerHTML="<span>"+m[0]+"</span>"+m[1];
+  b.onclick=function(){
+    if(moods[m[1]]){delete moods[m[1]];b.classList.remove("on")}
+    else{moods[m[1]]=5;b.classList.add("on");hearts([m[0]])}
+    renderMeters();
+  };
+  $("moods").appendChild(b);
+});
+NEEDS.forEach(function(n){
+  var b=document.createElement("button");b.className="chip";b.textContent=n;
+  b.onclick=function(){
+    b.classList.toggle("on");
+    var i=needs.indexOf(n);
+    if(i>-1){needs.splice(i,1)}else{needs.push(n)}
+  };
+  $("needs").appendChild(b);
+});
+$("sendMood").onclick=function(){
+  var sel=MOODS.filter(function(m){return moods[m[1]]});
+  if(!sel.length){toast("Escoge primero cómo te sientes 💙");return}
+  var msg="💙 Hola mi amor, soy Luis. Hoy me siento así:\n"+sel.map(function(m){var v=moods[m[1]];return "• "+m[0]+" "+m[1]+": "+v+"/10 ("+WORDS[v-1]+")"}).join("\n");
+  if(needs.length){msg+="\nLo que necesito: "+needs.join(", ")+"."}
+  var n=$("nota").value.trim();
+  if(n){msg+="\nAdemás: "+n}
+  hearts();wa(msg);
+};
+
+/* Cupones */
+var BASE=[
+["🎬","Día de cine","Plan de película y snacks"],
+["🍿","Tú eliges la película","Sin quejas, yo la veo contigo"],
+["👩‍🍳","Día de cocinar juntos","Tú eliges el menú"],
+["🍕","La novia paga la comida","Pides lo que quieras"],
+["🍔","Noche de comida chatarra","Hamburguesas, papas y gaseosa"],
+["🍦","Salida por helado","El sabor más grande"],
+["🛋️","Maratón de series","Todo el día en el sofá"],
+["💆","Masaje de 20 minutos","Con aceite y música suave"],
+["🎮","Noche de videojuegos","Yo juego lo que tú quieras"],
+["🌅","Picnic al atardecer","Con comida de tus favoritas"],
+["🧁","Hornear un postre juntos","Y comérnoslo calientico"],
+["☕","Café y conversación","Sin celulares"],
+["🚗","Paseo sin rumbo","Con tu playlist"],
+["🎲","Noche de juegos de mesa","El perdedor lava platos"],
+["🍣","Cita en restaurante nuevo","Lo escogemos juntos"],
+["🛵","Antojo a domicilio","Pido lo que se te antoje"],
+["🛌","Desayuno en la cama","Y dormir hasta tarde"],
+["💌","Carta de amor","Escrita a mano para ti"],
+["🎤","Karaoke en casa","Aunque yo cante feo"],
+["🤗","Día de abrazos y manta","Cero planes, puro amor"],
+["🏞️","Plan al aire libre","Caminata, parque o playa"],
+["📸","Sesión de fotos juntos","Para guardar el recuerdo"],
+["🍫","Cata de dulces","Probamos y calificamos"],
+["🏋️","Día de ir al gym juntos","Yo te acompaño y te animo"],
+["🥤","Batido después del gym","Te lo preparo yo"],
+["🏃","Salida a trotar o caminar","Y después premio de comida"],
+["🍝","Cena romántica en casa","Con velitas y tu plato favorito"],
+["🌮","Noche de tacos","Armamos los nuestros"],
+["🍗","Alitas y partido","Con todas las salsas"],
+["🎳","Noche de bolos","El que pierde invita al helado"],
+["🛁","Spa en casa","Mascarillas, masaje y música"],
+["🎁","Regalito sorpresa","Algo que te va a encantar"],
+["🌙","Noche de estrellas","Manta, snacks y cielo"],
+["🍩","Antojo de dulce","Donas, brownies o lo que quieras"],
+["🌟","Cupón comodín","Tú inventas el plan"]
+];
+var custom=LS.get("v2custom",[]);
+var used=LS.get("v2used",{});
+var extra=LS.get("v2extra",[]);
+var gn=LS.get("v2gn",0);
+var RES=[
+["🕵️","Resolver un asesinato juntos","Noche de misterio con pistas y sospechosos"],
+["🔐","Escape room casero","Armo acertijos y tenemos que escapar"],
+["🧩","Rompecabezas gigante","Con snacks y música"],
+["👻","Noche de película de miedo","Con manta y abrazos obligatorios"],
+["🎭","Cena de personajes","Nos disfrazamos y cenamos actuando"],
+["🎯","Torneo de retos","El perdedor consiente al ganador"],
+["👨‍🍳","Concurso de cocina: tú vs yo","Gana quien cocine más rico"],
+["🙈","Cena a ciegas","Adivinamos sabores con los ojos vendados"],
+["🚲","Paseo en bicicleta","Con parada para comer algo"],
+["🎨","Noche de pintura","Pintamos juntos con vino o jugo"],
+["💃","Clase de baile en la sala","Aunque pisemos los pies"],
+["🧠","Noche de trivia","Preguntas sobre nosotros y del mundo"],
+["🔭","Ver las estrellas","Con manta y chocolate caliente"],
+["🏖️","Día de playa o piscina","Sol, agua y snacks"],
+["🎪","Feria o parque de diversiones","Con algodón de azúcar"],
+["📚","Tarde de librería","Cada uno escoge un libro para el otro"],
+["🌄","Ver el amanecer","Madrugamos y desayunamos rico"],
+["🧺","Día de mercado","Compramos ingredientes y cocinamos"],
+["🍕","Pizza desde cero","Masa, salsa y toppings a tu gusto"],
+["🥞","Brunch de panqueques","Con frutas, miel y chocolate"],
+["🎬","Maratón de una saga completa","Tú escoges cuál"],
+["🎧","Playlist de nuestra historia","Canciones y recuerdos de nosotros"],
+["🛍️","Tarde de compras","Te ayudo a escoger tu outfit"],
+["🌳","Caminata a un mirador","Con picnic en la cima"],
+["🎈","Cita sorpresa organizada por mí","Solo te digo la hora"],
+["📵","Noche sin celulares","Solo tú, yo y buena conversación"],
+["🗺️","Búsqueda del tesoro","Pistas por la casa o la ciudad"],
+["🧖","Día de cuidado personal juntos","Mascarillas, pelo y consentimiento"]
+];
+var GA=[["🎬","Noche de cine"],["🎲","Noche de juegos"],["🍳","Cocinar juntos"],["🚶","Paseo"],["🎮","Videojuegos"],["🎤","Karaoke"],["📸","Sesión de fotos"],["🛋️","Maratón de series"],["🍰","Postre casero"],["🧩","Reto en pareja"]];
+var GB=["con antojo sorpresa","a ciegas","con disfraces","con apuesta","a la luz de velas","sin celulares","con playlist nuestra","con premio final"];
+function gen(n){
+  var a=GA[n%GA.length],b=GB[Math.floor(n/GA.length)%GB.length],r=Math.floor(n/(GA.length*GB.length));
+  return [a[0],a[1]+" "+b+(r?" #"+(r+1):""),"Combo sorpresa 🎁"];
+}
+function addMore(){
+  var have={};BASE.concat(extra,custom).forEach(function(c){have[c[1]]=1});
+  var res=RES.filter(function(c){return !have[c[1]]}).slice(0,8);
+  while(res.length<8){res.push(gen(gn++))}
+  LS.set("v2gn",gn);extra=extra.concat(res);LS.set("v2extra",extra);
+  render();toast("¡Llegaron cupones nuevos! 🎉");hearts(["🎟️","💙","🕵️"]);
+}
+function render(){
+  var all=BASE.concat(extra,custom),box=$("cups");box.innerHTML="";var left=0;
+  all.forEach(function(c,i){
+    var k=c[1],done=!!used[k];if(!done)left++;
+    var d=document.createElement("div");d.className="cup"+(done?" used":"");
+    d.innerHTML="<div class='e'>"+c[0]+"</div><b></b><small></small><button></button>";
+    d.querySelector("b").textContent=c[1];
+    d.querySelector("small").textContent=c[2]||"Cupón creado por ti 💙";
+    var bt=d.querySelector("button");bt.textContent=done?"Canjeado ✓":"Canjear 💙";
+    bt.onclick=function(){
+      if(used[k]){toast("Ya canjeaste este cupón 😉");return}
+      used[k]=1;LS.set("v2used",used);render();hearts([c[0],"💙"]);
+      wa("🎟️ Mi niño Luis canjeó un cupón: "+c[0]+" "+c[1]+". ¡Hay que cumplirle! 💙");
+    };
+    box.appendChild(d);
+  });
+  $("left").textContent=left+" disponibles";
+  if(left===0){addMore()}
+}
+$("addC").onclick=function(){
+  var n=$("cName").value.trim();
+  if(!n){toast("Ponle un nombre al cupón ✍️");return}
+  var em=$("cEmoji").value.trim()||"🎟️";
+  custom.push([em,n,""]);
+  LS.set("v2custom",custom);$("cName").value="";$("cEmoji").value="";
+  render();hearts();toast("¡Cupón creado! Ya puedes canjearlo 🎉");
+  wa("✨ Mi niño consentido inventó un cupón nuevo: "+em+" "+n+". ¡Prepárate para cumplirlo! 💙");
+};
+render();
+
+/* Día de comer */
+var DAYS=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],day=null;
+DAYS.forEach(function(d){
+  var b=document.createElement("button");b.className="opt";b.innerHTML="<span>🍴</span>"+d.slice(0,3);
+  b.onclick=function(){
+    document.querySelectorAll("#days .opt").forEach(function(x){x.classList.remove("on")});
+    b.classList.add("on");day=d;
+  };
+  $("days").appendChild(b);
+});
+$("sendDay").onclick=function(){
+  var l=$("lugar").value.trim();
+  if(!day){toast("Escoge un día de la semana 📅");return}
+  if(!l){toast("Dime dónde quieres comer 🍽️");return}
+  hearts(["🍕","🍔","🍣","🍝","💙"]);
+  wa("🍽️ Mi amor, quiero que el "+day.toLowerCase()+" vayamos a comer a: "+l+". 💙");
+};
+/* Envío final: todo junto en un solo mensaje */
+var pend=LS.get("v2pend",{items:[],day:""});
+function wa(msg){
+  if(msg.indexOf("vayamos a comer")>-1){pend.day=msg}else{pend.items.push(msg)}
+  LS.set("v2pend",pend);toast("Guardado ✔ Se envía al final 💙");upd();
+}
+function moodTxt(){
+  var sel=MOODS.filter(function(m){return moods[m[1]]}),t=[];
+  if(sel.length){t.push("💭 Hoy me siento así:\n"+sel.map(function(m){var v=moods[m[1]];return "• "+m[0]+" "+m[1]+": "+v+"/10 ("+WORDS[v-1]+")"}).join("\n"))}
+  if(needs.length){t.push("🙏 Lo que necesito: "+needs.join(", ")+".")}
+  var n=$("nota").value.trim();if(n){t.push("📝 Además: "+n)}
+  return t.join("\n\n");
+}
+function fullMsg(){
+  var p=[],m=moodTxt();if(m)p.push(m);
+  if(pend.items.length)p.push(pend.items.join("\n\n"));
+  if(pend.day)p.push(pend.day);
+  return p.length?"💙 Hola mi amor, soy tu niño. Mira lo que escogí para ti:\n\n"+p.join("\n\n"):"";
+}
+function upd(){
+  var c=pend.items.length+(pend.day?1:0),mm=Object.keys(moods).length;
+  $("sum").textContent="Emociones: "+mm+" · Necesidades: "+needs.length+" · Cupones y plan: "+c;
+}
+document.addEventListener("click",function(){setTimeout(upd,0)});
+document.addEventListener("input",upd);
+$("sendAll").onclick=function(){
+  var m=fullMsg();
+  if(!m){toast("Escoge algo primero 💙");return}
+  hearts();$("pv").textContent=m;
+  $("go").href="https://wa.me/"+PHONE+"?text="+encodeURIComponent(m);
+  $("sheet").classList.add("show");
+};
+$("go").onclick=function(){pend={items:[],day:""};LS.set("v2pend",pend);setTimeout(function(){$("sheet").classList.remove("show");upd()},700)};
+$("sendMood").textContent="Listo, ir a enviar 👇";
+$("sendMood").onclick=function(){$("final").scrollIntoView({behavior:"smooth"})};
+$("sendDay").textContent="Guardar mi plan 🍴";
+upd();
+</script>
+</body>
+</html>
